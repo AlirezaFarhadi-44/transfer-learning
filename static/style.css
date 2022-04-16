@@ -46,14 +46,14 @@ h1, p, pre{
 }
 
 body{
-    margin-bottom: 0px;
-    background-color: hsl(64, 31%, 20%);
+	background: #C5C402;
+	background: -moz-linear-gradient(left, #C5C402 0%, #F1FFD9 50%, #000000 100%);
+	background: -webkit-linear-gradient(left, #C5C402 0%, #F1FFD9 50%, #000000 100%);
+	background: linear-gradient(to right, #C5C402 0%, #F1FFD9 50%, #000000 100%);
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
-    
-    
+    align-items: center;   
 }
 
 
@@ -86,7 +86,7 @@ img{
 }
 
 .description{
-    background: var(--bright-orange);
+    background: #101820FF;
     box-sizing: border-box;
     border-top-left-radius: 22px;
     border-bottom-left-radius: 22px;
@@ -95,8 +95,11 @@ img{
 .uploader{
     border-left: 2.5px solid black;
     border-right: 2.5px solid black;
-    background: var(--dark-cyan);
+    background: #FEE715FF;
     height: auto;
+	box-sizing: border-box;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
 }
 
 .statistics{
@@ -125,7 +128,7 @@ a{
 }
 
 .button-SUVs{
-    color: var(--dark-cyan);
+    color: Black;
 }
 
 
@@ -136,12 +139,12 @@ button:hover{
 
 .button-SUVs-hover:hover, .button-SUVs:hover{
     color: var(--white);
-    background: var(--dark-cyan);
+    background: Black;
 }
 
 .button-SUVs-hover:hover{
     color: var(--white);
-    background: var(--dark-cyan);
+    background: Black;
 }
 
 .box{
@@ -173,7 +176,7 @@ img{
   }
   
 .button {
-    width: 100%;
+    width: 230%;
     height: 45px;
     font-family: 'Roboto', sans-serif;
     font-size: 11px;

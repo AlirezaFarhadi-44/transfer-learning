@@ -27,30 +27,16 @@ def predict():
         prob = np.round_(prob * 100, decimals=2)
         result = {
             'prediction': classes[prediction],
-            'prob': {str(class_): str(proba) for class_ , proba in zip(classes, prob)}
+            'confidance': {str(class_): str(proba) for class_ , proba in zip(classes, prob)}
         }
 
         return jsonify(result), 200
         
     except Exception as ex:
-        result = {'errer': 'Input must be an image.'}
+        result = {'errer'}
         return jsonify(result), 400
 
 
-@app.route('/statistic', methods=['GET'])
-def statistic():   
-    result = {'confusion_matrix': {}} 
-    classes = ['Car', 'Fish', 'Pigeon']
-    precisions = [.97, 1, .98]    
-    recalls = [1, .98, .98]
-    conf_mat = np.array([[223, 0, 1],[2, 219, 3], [5, 0, 219]])
-
-    for class_, precision, recall, vector in zip(classes, precisions, recalls, conf_mat):
-        result[class_] = {'precision': str(precision), 'recall': str(recall)}
-        result['confusion_matrix'][class_] = str(vector)
-
-    return jsonify(result), 200
-   
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--port', default=5000, type=int, help='port number') 
