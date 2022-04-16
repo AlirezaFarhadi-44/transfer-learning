@@ -2,15 +2,10 @@ from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import numpy as np
 import argparse
-from keras.applications.vgg16 import VGG16
-from keras.applications.vgg16 import preprocess_input
+
 
 app = Flask(__name__)
-model = tf.keras.models.load_model('Model')
-
-conv_base = VGG16(weights='imagenet',
-                 include_top=False,
-                 input_shape=(100, 100, 3))
+model = tf.keras.models.load_model('Model2')
 
 @app.route('/')
 def home():
@@ -19,25 +14,27 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
     classes = ['Car', 'Fish', 'Pigeon']
+    try:
         image = request.files.get('image').read()
         image = tf.image.decode_image(image, expand_animations=False)
-        image = tf.keras.applications.efficientnet_v2.preprocess_input(image)
-        image = tf.image.resize(image, (100, 100))
+        image = tf.image.resize(image, (160, 160))
         image = tf.expand_dims(image, axis=0)
-        image = conv_base.predict(image)
-                
+        image = tf.keras.applications.mobilenet_v2.preprocess_input(image)
         preds = model.predict(image)
         preds = tf.Variable(preds)
-        probas = tf.keras.activations.softmax(preds).numpy().reshape(-1)
-        prediction = np.argmax(probas)
-        probas = np.round_(probas * 100, decimals=2)
+        prob = tf.keras.activations.softmax(preds).numpy().reshape(-1)
+        prediction = np.argmax(prob)
+        prob = np.round_(prob * 100, decimals=2)
         result = {
             'prediction': classes[prediction],
-            'probas': {str(class_): str(proba) for class_ , proba in zip(classes, probas)}
+            'prob': {str(class_): str(proba) for class_ , proba in zip(classes, prob)}
         }
 
         return jsonify(result), 200
-
+        
+    except Exception as ex:
+        result = {'errer': 'Input must be an image.'}
+        return jsonify(result), 400
 
 
 @app.route('/statistic', methods=['GET'])
