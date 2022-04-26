@@ -1,3 +1,5 @@
+A little project for classification pictures into 3 classes (Car, Fish, Pigeon)
+trained with MobileNetV2.
 1. Clone repo in any way you know.
 
 2. Install the requirements listed in the requirements.txt.
