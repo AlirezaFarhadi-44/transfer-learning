@@ -1,7 +1,7 @@
-Clone repo in any way you know.
+1. Clone repo in any way you know.
 
-Install the requirements listed in the file.
+2. Install the requirements listed in the file.
 
-Run app.py 
+3. Run app.py 
 
-Go to localhost:5000 ( http://127.0.0.1:5000 ) and Enjoy it.
+4. Go to localhost:5000 ( http://127.0.0.1:5000 ) and Enjoy it.
