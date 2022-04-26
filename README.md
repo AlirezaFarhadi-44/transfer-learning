@@ -1,6 +1,6 @@
 1. Clone repo in any way you know.
 
-2. Install the requirements listed in the file.
+2. Install the requirements listed in the requirements.txt.
 
 3. Run app.py 
 
