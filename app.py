@@ -38,8 +38,4 @@ def predict():
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-p', '--port', default=5000, type=int, help='port number') 
-
-    args = parser.parse_args()
-    app.run(port=args.port)
+    app.run()
